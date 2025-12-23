@@ -1,59 +1,108 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛒 Point of Sales (POS) - Warung Pintar
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Kasir berbasis Web (Point of Sales) yang dirancang untuk membantu operasional warung UMKM. Aplikasi ini terintegrasi dengan **Midtrans Payment Gateway** untuk pembayaran QRIS dan mendukung teknologi **PWA (Progressive Web App)** sehingga dapat diinstal dan berjalan layaknya aplikasi native di perangkat mobile.
 
-## About Laravel
+## 🚀 Fitur Unggulan
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **Manajemen Produk:** Tambah, Edit, Hapus (CRUD) data barang & stok.
+* **Transaksi Kasir:** Antarmuka kasir yang responsif dan mudah digunakan.
+* **Pembayaran Digital:** Integrasi **QRIS via Midtrans** (OVO, GoPay, Dana, LinkAja, BCA, dll).
+* **PWA Ready:** Mendukung *Add to Home Screen* dan *Offline Capability* (Service Worker).
+* **Manajemen User:** Sistem login aman untuk Admin/Kasir.
+* **Laporan Transaksi:** Riwayat status pembayaran Real-time (Settlement/Pending/Expire).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Teknologi yang Digunakan (Tech Stack)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Framework:** [Laravel](https://laravel.com/) (PHP Monolith)
+* **Database:** MySQL
+* **Frontend:** Blade Templates, Bootstrap/Tailwind CSS
+* **Payment Gateway:** [Midtrans](https://midtrans.com/) (Snap API)
+* **PWA:** Web App Manifest & Service Worker
 
-## Learning Laravel
+## 📋 Prasyarat Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Sebelum menginstal, pastikan laptop Anda sudah terinstal:
+* PHP >= 8.0
+* Composer
+* MySQL / MariaDB
+* Node.js & NPM
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Cara Instalasi
 
-## Laravel Sponsors
+Ikuti langkah-langkah berikut untuk menjalankan project di lokal:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clone Repositori**
+    ```bash
+    git clone [https://github.com/username-anda/nama-project-kasir.git](https://github.com/username-anda/nama-project-kasir.git)
+    cd nama-project-kasir
+    ```
 
-### Premium Partners
+2.  **Install Dependensi PHP & JS**
+    ```bash
+    composer install
+    npm install && npm run build
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3.  **Konfigurasi Environment**
+    Salin file `.env.example` menjadi `.env`:
+    ```bash
+    cp .env.example .env
+    ```
 
-## Contributing
+4.  **Generate App Key**
+    ```bash
+    php artisan key:generate
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Konfigurasi Database & Midtrans**
+    Buka file `.env` dan sesuaikan konfigurasi berikut:
 
-## Code of Conduct
+    ```ini
+    DB_DATABASE=nama_database_anda
+    DB_USERNAME=root
+    DB_PASSWORD=
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    # Konfigurasi Midtrans (Ambil dari Dashboard Midtrans Sandbox)
+    MIDTRANS_MERCHANT_ID=G-xxxxxxxxx
+    MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxxxxxxx
+    MIDTRANS_SERVER_KEY=SB-Mid-server-xxxxxxxxx
+    MIDTRANS_IS_PRODUCTION=false
+    MIDTRANS_IS_SANITIZED=true
+    MIDTRANS_IS_3DS=true
+    ```
 
-## Security Vulnerabilities
+6.  **Migrasi Database**
+    ```bash
+    php artisan migrate --seed
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7.  **Jalankan Server**
+    ```bash
+    php artisan serve
+    ```
+    Buka browser dan akses: `http://localhost:8000`
 
-## License
+## 💳 Simulasi Pembayaran (Sandbox)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Karena aplikasi ini menggunakan mode **Sandbox (Testing)**, jangan gunakan uang asli.
+1.  Lakukan transaksi di aplikasi hingga muncul QR Code.
+2.  Copy URL gambar QR Code tersebut.
+3.  Buka [Midtrans Simulator](https://simulator.sandbox.midtrans.com/qris/index).
+4.  Paste URL dan klik **Pay/Scan**.
+5.  Status transaksi di aplikasi akan otomatis berubah menjadi **PAID**.
+
+## 📱 Cara Install PWA (Mobile)
+
+1.  Akses website melalui browser (Chrome) di HP Android.
+2.  Tunggu notifikasi **"Add to Home Screen"** muncul di bawah, atau buka menu titik tiga di pojok kanan atas > pilih **Install App**.
+3.  Aplikasi akan muncul di menu utama HP Anda.
+
+## 📝 Catatan Pengembang
+
+Project ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Web Lanjut.
+* **Nama:** [Nama Anda]
+* **NIM:** [NIM Anda]
+* **Kampus:** [Nama Kampus]
+
+---
+*Dibuat dengan ❤️ menggunakan Laravel.*
