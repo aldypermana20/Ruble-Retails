@@ -97,12 +97,7 @@ Karena aplikasi ini menggunakan mode **Sandbox (Testing)**, jangan gunakan uang 
 2.  Tunggu notifikasi **"Add to Home Screen"** muncul di bawah, atau buka menu titik tiga di pojok kanan atas > pilih **Install App**.
 3.  Aplikasi akan muncul di menu utama HP Anda.
 
-## 📝 Catatan Pengembang
-
-Project ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Web Lanjut.
-* **Nama:** [Nama Anda]
-* **NIM:** [NIM Anda]
-* **Kampus:** [Nama Kampus]
 
 ---
-*Dibuat dengan ❤️ menggunakan Laravel.*
+*Dibuat dengan menggunakan Laravel.*
+
