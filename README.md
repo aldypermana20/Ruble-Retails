@@ -1,4 +1,4 @@
-# 🛒 Point of Sales (POS) - Warung Pintar
+# 🛒 Ruble - Ruang Usaha Berbasis Layanan Elektronik
 
 Aplikasi Kasir berbasis Web (Point of Sales) yang dirancang untuk membantu operasional warung UMKM. Aplikasi ini terintegrasi dengan **Midtrans Payment Gateway** untuk pembayaran QRIS dan mendukung teknologi **PWA (Progressive Web App)** sehingga dapat diinstal dan berjalan layaknya aplikasi native di perangkat mobile.
 
